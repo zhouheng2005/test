@@ -13,6 +13,30 @@ const mock: Array<MockMethod> = [
                 data: 'Hello World'
             }
         }
+    },{
+        url: '/api/routes',
+        method: 'get',
+        response: () => {
+            // 路由
+            const routes = [{
+                path: '/tabOne',
+                name: 'tabOne',
+                component: 'tabOne.vue'
+            }, {
+                path: '/tabTwo',
+                name: 'tabTwo',
+                component: 'tabTwo.vue'
+            }, {
+                path: '/tabThree',
+                name: 'tabThree',
+                component: 'tabThree.vue',
+            }]
+            return {
+                status: 200,
+                message: 'success',
+                data: routes
+            }
+        }
     }
 ]
 
