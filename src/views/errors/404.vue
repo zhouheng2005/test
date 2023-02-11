@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    登录
+    404
   </div>
 </template>
 

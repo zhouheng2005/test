@@ -11,12 +11,16 @@ const routes: Array<RouteRecordRaw> = [
         path: "/Home",
         component: () => import("../views/index.vue"),
     }, {
-        path: "/",
+        path: "/login",
         component: () => import("../views/login/login.vue"),
     }, {
         path: "/register",
         component: () => import("../views/login/register.vue"),
-    },
+    }, {
+        path: '/:catchAll(.*)',
+        name: '404',
+        component: () => import('@/views/errors/404.vue')
+    }
 ];
 
 const router = createRouter({
