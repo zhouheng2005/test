@@ -1,11 +1,20 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { viteMockServe } from 'vite-plugin-mock'
 // https://vitejs.dev/config/
 export default defineConfig({
   // 设置开发者模式以及生产模式访问路径
   base: process.env.NODE_ENV === "production" ? "./" : "./",
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    // mock服务
+    viteMockServe({
+      supportTs: false,
+      logger: false,
+      mockPath: "./src/mock/",
+    }),
+  ],
   // 打包配置
   build: {
     target: 'modules',

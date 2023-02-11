@@ -1,5 +1,12 @@
+// import { createApp } from 'vue'
+// import App from './App.vue'
+// import './assets/main.css'
+// createApp(App).mount('#app')
 import { createApp } from 'vue'
 import App from './App.vue'
 import './assets/main.css'
-createApp(App).mount('#app')
-
+import router from './router'
+const app = createApp(App)
+// 启用路由
+app.use(router)
+app.mount('#app')

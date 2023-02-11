@@ -1,9 +1,14 @@
-<script setup lang="ts">
+<template>
+  <router-view></router-view>
+</template>
+
+<!-- <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 </script>
 
 <template>
+  11122
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
@@ -44,4 +49,4 @@ header {
     flex-wrap: wrap;
   }
 }
-</style>
+</style> -->
