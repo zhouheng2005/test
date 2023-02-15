@@ -15,6 +15,9 @@ export default defineConfig({
       mockPath: "./src/mock/",
     }),
   ],
+  // define: {
+  //   'process.env': {}
+  // },
   // 打包配置
   build: {
     target: 'modules',
@@ -43,7 +46,7 @@ export default defineConfig({
     host: "0.0.0.0",// 访问的地址
     proxy: {
       '/api': {
-        target: "请求的域名地址",
+        target: "https://www.shanlishuzi.com/admin",
         changeOrigin: true,// 是否允许跨域代理
         rewrite: (path) => path.replace(/^\/api/, '') // 重定向地址
       }

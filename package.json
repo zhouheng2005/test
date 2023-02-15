@@ -3,7 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --mode dev",
+    "test": "vite --mode test",
+    "pro": "vite --mode pro",
+    "build:dev": "vue-tsc --noEmit && vite build --mode dev",
+    "build:test": "vue-tsc --noEmit && vite build --mode test",
+    "build:pro": "vue-tsc --noEmit && vite build --mode pro",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "test:e2e": "playwright test",
@@ -15,6 +20,7 @@
     "pinia": "^2.0.30",
     "pinia-plugin-persist": "^1.0.0",
     "sass": "^1.58.0",
+    "terser": "^5.16.3",
     "vite-plugin-mock": "^2.9.6",
     "vue": "^3.2.45",
     "vue-router": "^4.0.13"

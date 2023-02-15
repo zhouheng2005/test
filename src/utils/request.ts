@@ -1,4 +1,6 @@
 import axios from 'axios'
+
+console.log(import.meta.env.VITE_BASE_API)
 // axios对象
 const service = axios.create({
     // axios请求基础URL
