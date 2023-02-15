@@ -31,14 +31,20 @@ const router = createRouter({
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
+    // const todepth = to.path.split('/').length;
+    // const fromdepth = from.path.split('/').length;
+    // console.log(to.path)
+    // console.log(from.path)
+    // if (todepth < fromdepth) {
+    //     console.log('后退。。。')
+    //     from.meta.keepalive = false
+    //     to.meta.keepalive = true
+    // }
     if (to.path !== '/Home' && to.path !== '/') {
         const store = useStore()
-        console.log(11111)
         if (store.routes.length < 1) {
-            console.log(2222)
             GetDynamicRoutes().then(res => {
                 store.addRoutes(res.data.data, router)
-                console.log(3333)
                 next({ path: to.path, replace: true })
             }).catch(_ => {
                 next()
