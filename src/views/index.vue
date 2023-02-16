@@ -3,6 +3,7 @@
   <div style="display: flex;gap:20px">
     <button v-for="item in routes" @click="handleClick(item.path)"> {{ item.name }}</button>
   </div>
+
   <el-row class="mb-4">
     <el-button>Default</el-button>
     <el-button type="primary">Primary</el-button>
@@ -38,6 +39,7 @@
     <el-button type="warning" :icon="Star" circle />
     <el-button type="danger" :icon="Delete" circle />
   </el-row>
+{{ userStore.userInfo.nickName }}
 </template>
 
 <script lang="ts" setup>
@@ -50,23 +52,25 @@ import {
   Star,
 } from '@element-plus/icons-vue'
 import { TestApi, GetDynamicRoutes } from '../apis'
-import { useStore } from "../store/index";
+import store from "@/store/index";
 import { useRouter } from 'vue-router'
 import { computed } from "@vue/reactivity";
 import { onMounted } from "vue";
-const store = useStore()
+const { routesStore,userStore } = store();
 const router = useRouter()
 // 动态路由表
-const routes = computed(() => store.routes)
+const routes = computed(() => routesStore.routes)
 // 路由按钮点击事件
 const handleClick = (path: string) => {
   router.push({ path })
 }
 onMounted(() => {
-  if (store.routes.length < 1) {
+ 
+  if (routesStore.routes.length < 1) {
     // 获取动态路由
     GetDynamicRoutes().then(res => {
-      store.addRoutes(res.data.data, router)
+      routesStore.addRoutes(res.data.data, router);
+      console.log( routesStore.routes)
     })
   }
   // 测试接口

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
-import { useStore } from "../store";
+import store from "@/store/index";
 import { GetDynamicRoutes } from '../apis'
 // 路由类型:RouteRecordRaw
 const routes: Array<RouteRecordRaw> = [
@@ -41,10 +41,10 @@ router.beforeEach((to, from, next) => {
     //     to.meta.keepalive = true
     // }
     if (to.path !== '/Home' && to.path !== '/') {
-        const store = useStore()
-        if (store.routes.length < 1) {
+        const { routesStore } = store();
+        if (routesStore.routes.length < 1) {
             GetDynamicRoutes().then(res => {
-                store.addRoutes(res.data.data, router)
+                routesStore.addRoutes(res.data.data, router)
                 next({ path: to.path, replace: true })
             }).catch(_ => {
                 next()

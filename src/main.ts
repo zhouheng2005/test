@@ -6,6 +6,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import pinia from './store/pinia'
+import piniaPersist from 'pinia-plugin-persist'
 import ElementPlus from 'element-plus'
 import locale from "element-plus/lib/locale/lang/zh-cn";
 import 'element-plus/dist/index.css'
@@ -13,6 +14,7 @@ import './assets/main.css'
 const app = createApp(App)
 // 启用路由
 app.use(router)
+pinia.use(piniaPersist)
 app.use(pinia)
 app.use(ElementPlus, {
     locale
