@@ -4,8 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "vite --mode dev",
-    "test": "vite --mode test",
-    "pro": "vite --mode pro",
     "test:e2e": "playwright test",
     "build:dev": "vue-tsc --noEmit && vite build --mode dev",
     "build:test": "vue-tsc --noEmit && vite build --mode test",
@@ -18,11 +16,14 @@
   "dependencies": {
     "axios": "^1.3.2",
     "element-plus": "^2.2.30",
+    "nprogress": "^0.2.0",
+    "path": "^0.12.7",
     "pinia": "^2.0.30",
     "pinia-plugin-persist": "^1.0.0",
     "sass": "^1.58.0",
     "terser": "^5.16.3",
     "vite-plugin-mock": "^2.9.6",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vue": "^3.2.45",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.0.13"
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@playwright/test": "^1.28.1",
     "@types/node": "^18.11.12",
+    "@types/nprogress": "^0.2.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/tsconfig": "^0.1.3",
     "npm-run-all": "^4.1.5",

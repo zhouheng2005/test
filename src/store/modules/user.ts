@@ -10,13 +10,15 @@ const useUserStore = defineStore({
 			userInfo: {
 				nickName: '章三'
 			},
-			token: 'xfdfdsjkdsj'
+			token: ''
 		}
 	},
 	actions: {
 		
 	},
-	getters: {},
+	getters: {
+		
+	},
 })
 
 export default useUserStore

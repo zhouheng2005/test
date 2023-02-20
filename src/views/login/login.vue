@@ -1,17 +1,143 @@
-
-
 <template>
-  <div class="body">
-    登录11111222
+  <div class="login-container">
+    <div class="login-box">
+      <!-- <SwitchDark class="login-dark" /> -->
+      <div class="login-left">
+        <img src="@/assets/image/login/side-logo.png" />
+      </div>
+      <div class="login-form">
+        <!-- <div class="info-qrcode">{{ accountLogin ? "扫码登录" : "账号登录" }}</div>
+        <img
+          src="@/assets/image/login/qrcode-icon.png"
+          class="qrcode"
+          @click="handleClick"
+        /> -->
+        <LoginForm />
+        <!-- v-if="accountLogin"
+        <LoginQrcode v-else /> -->
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-
+import { ref } from "vue";
+import LoginForm from "./components/LoginForm.vue";
+// import LoginQrcode from "./components/LoginQrcode.vue";
+// import SwitchDark from "@/components/SwitchDark/index.vue";
+const accountLogin = ref<boolean>(true);
+const handleClick = () => {
+  accountLogin.value = !accountLogin.value;
+};
 </script>
 
-<style scoped>
-.body{
-  color: black;
+<style scoped lang="scss">
+.login-container {
+  background-color: #f0f2f5;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 25px;
+  box-sizing: border-box;
+}
+
+.login-dark {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.login-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .login-left {
+    width: 50%;
+    img {
+      width: 100%;
+      max-width: 900px;
+    }
+  }
+
+  .login-form {
+    max-width: 480px;
+    width: 50%;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+    box-sizing: border-box;
+    position: relative;
+
+    .info-qrcode {
+      width: 150px;
+      height: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+      position: absolute;
+      top: -60px;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #1492ff;
+      font-size: 16px;
+      &::after {
+        content: "";
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 10px;
+        height: 26px;
+        border-top: 13px solid #fff;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 13px solid transparent;
+        position: absolute;
+        top: 40px;
+        right: 16px;
+      }
+    }
+  }
+}
+.qrcode {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  width: 30px;
+}
+.login-qrcode {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  img {
+    width: 60%;
+  }
+}
+
+@media (max-width: 850px) {
+  .login-container {
+    padding: 10px;
+  }
+  .login-box {
+    .login-form {
+      width: 88%;
+      .title {
+        font-size: 20px;
+      }
+    }
+  }
+  .login-left {
+    display: none;
+  }
 }
 </style>

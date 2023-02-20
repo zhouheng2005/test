@@ -1,46 +1,36 @@
 <template>
-  <router-view></router-view>
+  <el-config-provider :size="globalComSize" :locale="zhCn">
+    <router-view></router-view>
+  </el-config-provider>
 </template>
-<!-- <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script setup lang="ts">
+import { computed } from "vue";
+import store from "@/store/index";
+// 配置element中文
+import zhCn from "element-plus/es/locale/lang/zh-cn";
+const { settingStore } = store();
+// 配置全局组件大小
+const globalComSize = computed(()=>settingStore.themeConfig.globalComSize);
+// console.log(globalComSize.value)
 </script>
-<template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-  <main>
-    <TheWelcome />
-  </main>
-</template>
-<style scoped>
-header {
-  line-height: 1.5;
+
+<style lang="scss">
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: Avenir, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.el-pager li:focus {
+  border: none;
 }
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.el-dropdown:focus {
+  border: none;
 }
-</style> -->
+.svg-icon:focus {
+  border: none;
+}
+</style>

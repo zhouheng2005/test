@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    注册
+    404
   </div>
 </template>
 

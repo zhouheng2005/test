@@ -65,7 +65,6 @@ const handleClick = (path: string) => {
   router.push({ path })
 }
 onMounted(() => {
- 
   if (routesStore.routes.length < 1) {
     // 获取动态路由
     GetDynamicRoutes().then(res => {

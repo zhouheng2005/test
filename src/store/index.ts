@@ -1,9 +1,11 @@
 import useUserStore from './modules/user'
 import useRoutesStore from './modules/dynamicRoutes'
+import useSettingStore from './modules/setting'
 const store = () => {
     return {
         userStore: useUserStore(),
         routesStore: useRoutesStore(),
+        settingStore: useSettingStore(),
     }
 }
 export default store
