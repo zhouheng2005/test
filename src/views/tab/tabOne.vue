@@ -11,10 +11,10 @@ import { useRouter } from 'vue-router';
 
 const { userStore } = store();
 const handleeitl = (name:any) => {
-  userStore.userInfo.nickName = name
+  userStore.userInfo.username = name
 }
 const handleeitl1 = (name:any) => {
-  userStore.userInfo.nickName = name
+  userStore.userInfo.username = name
 }
 const router = useRouter()
 const handleClick = () => router.push({ path: '/Home' })

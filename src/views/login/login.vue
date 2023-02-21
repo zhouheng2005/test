@@ -6,29 +6,33 @@
         <img src="@/assets/image/login/side-logo.png" />
       </div>
       <div class="login-form">
-        <!-- <div class="info-qrcode">{{ accountLogin ? "扫码登录" : "账号登录" }}</div>
-        <img
+        <!-- <div class="info-qrcode">{{ accountLogin ? "扫码登录" : "账号登录" }}</div> -->
+        <!-- <img
           src="@/assets/image/login/qrcode-icon.png"
           class="qrcode"
           @click="handleClick"
         /> -->
+        <div class="login-title">
+          <img class="icon" src="@/assets/image/logo.png" alt="logo" />
+          <h2 class="title">米闪闪渠道版</h2>
+        </div>
         <LoginForm />
-        <!-- v-if="accountLogin"
-        <LoginQrcode v-else /> -->
+        <!--v-if="accountLogin" <LoginQrcode v-else /> -->
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+// import { ref } from "vue";
 import LoginForm from "./components/LoginForm.vue";
 // import LoginQrcode from "./components/LoginQrcode.vue";
 // import SwitchDark from "@/components/SwitchDark/index.vue";
-const accountLogin = ref<boolean>(true);
-const handleClick = () => {
-  accountLogin.value = !accountLogin.value;
-};
+// const accountLogin = ref<boolean>(true);
+// const handleClick = () => {
+//   accountLogin.value = !accountLogin.value;
+// };
+
 </script>
 
 <style scoped lang="scss">
@@ -106,22 +110,26 @@ const handleClick = () => {
     }
   }
 }
+.login-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  .title {
+    margin: 0;
+    font-size: 30px;
+    white-space: nowrap;
+  }
+  .icon {
+    width: 60px;
+  }
+}
 .qrcode {
   position: absolute;
   right: 0;
   top: 0;
   cursor: pointer;
   width: 30px;
-}
-.login-qrcode {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  img {
-    width: 60%;
-  }
 }
 
 @media (max-width: 850px) {

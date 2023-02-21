@@ -1,8 +1,4 @@
 <template>
-  <div class="login-title">
-    <img class="icon" src="@/assets/image/logo.png" alt="logo" />
-    <h2 class="title">米闪闪渠道版</h2>
-  </div>
   <el-form ref="ruleFormRef" :model="ruleForm" :rules="rules">
     <el-form-item label="" prop="username">
       <el-input
@@ -49,16 +45,15 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
 import type { FormInstance } from "element-plus";
-// import { ElNotification } from "element-plus";
-// import { useRouter } from 'vue-router'
+import { ElNotification } from "element-plus";
+import { useRouter } from "vue-router";
 import store from "@/store/index";
-// import { getTimeStateStr } from "@/utils/index";
-
-// const router = useRouter()
-// const { userStore } = store();
-const ruleFormRef = ref<FormInstance>()
-const passwordType = ref('password')
-const loading = ref(false)
+import { getTimeStateStr } from "@/utils/index";
+const router = useRouter();
+const { userStore } = store();
+const ruleFormRef = ref<FormInstance>();
+const passwordType = ref("password");
+const loading = ref(false);
 
 const rules = reactive({
   username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
@@ -80,24 +75,23 @@ const submitForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   formEl.validate((valid) => {
     if (valid) {
-      //       loading.value = true
-      //       // 登录
-      //       setTimeout(async ()=>{
-      //         await userStore.login(ruleForm)
-      //         await router.push({
-      //           path: '/',
-      //         })
-      //         ElNotification({
-      //           title: getTimeStateStr(),
-      //           message: "欢迎登录 米闪闪渠道版",
-      //           type: "success",
-      //           duration: 3000
-      //         });
-      //         loading.value = true
-      //       },1000)
-      //     } else {
-      //       console.log('error submit!')
-      //       return false
+      loading.value = true;
+      // 登录
+      setTimeout(async () => {
+        await userStore.login(ruleForm);
+        await router.push({
+          path: "/",
+        });
+        ElNotification({
+          title: getTimeStateStr(),
+          message: "欢迎登录 米闪闪渠道版",
+          type: "success",
+          duration: 3000,
+        });
+        loading.value = true;
+      }, 1000);
+    } else {
+      return false;
     }
   });
 };
@@ -105,21 +99,6 @@ const submitForm = (formEl: FormInstance | undefined) => {
 
 <style lang="scss" scoped>
 $dark_gray: #889aa4;
-.login-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
-  .title {
-    margin: 0;
-    font-size: 30px;
-    white-space: nowrap;
-  }
-  .icon {
-    width: 60px;
-  }
-}
-
 ::v-deep(.el-input__inner) {
   height: 40px;
 }

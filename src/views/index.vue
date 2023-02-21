@@ -39,7 +39,7 @@
     <el-button type="warning" :icon="Star" circle />
     <el-button type="danger" :icon="Delete" circle />
   </el-row>
-{{ userStore.userInfo.nickName }}
+{{ userStore.userInfo.username }}
 </template>
 
 <script lang="ts" setup>

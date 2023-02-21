@@ -4,12 +4,10 @@ let modules = import.meta.glob("../../views/tab/*.vue")
 // pinia状态管理器
 const useRoutesStore = defineStore({
     id: 'router',
-    state: () => {
-        return {
-            // 路由表
-            routes: [] as Array<RouteRecordRaw>
-        }
-    },
+    state: () => ({
+        // 路由表
+        routes: [] as Array<RouteRecordRaw>
+    }),
     getters: {},
     actions: {
         // 添加动态路由，并同步到状态管理器中

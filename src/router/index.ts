@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import type { RouteRecordRaw } from "vue-router";
+import Layout from "@/layout/index.vue";
 // 扩展继承属性
 interface extendRoute {
     hidden?: boolean
@@ -27,16 +28,21 @@ NProgress.configure({ showSpinner: false }) // NProgress Configuration
  */
 const routes: Array<RouteRecordRaw & extendRoute> = [
     {
-        path: "/",
-        name: 'Home',
-        redirect: '/Home'
-    }, {
-        path: "/Home",
-        name: 'Home',
-        component: () => import("@/views/index.vue")
+        path: '/',
+        name: 'layout',
+        component: Layout,
+        redirect: '/home',
+        children: [
+            {
+                path: '/home',
+                component: () => import('@/views/index.vue'),
+                name: 'home',
+                meta: { title: '首页', icon: 'House', affix: true, role: ['other'] }
+            },
+        ]
     }, {
         path: "/login",
-        name: 'Login',
+        name: 'login',
         component: () => import("@/views/login/login.vue"),
         hidden: true,
         meta: { title: '登录' }
@@ -66,8 +72,8 @@ let hasRoles = true
 router.beforeEach((to, from, next) => {
     // 开启进度条
     NProgress.start()
-    if(typeof(to.meta.title) === 'string'){
-        document.title = to.meta.title+'-米闪闪渠道版-深圳市闪里数字科技有限公司' || '米闪闪渠道版-深圳市闪里数字科技有限公司'
+    if (typeof (to.meta.title) === 'string') {
+        document.title = to.meta.title + '-米闪闪渠道版-深圳市闪里数字科技有限公司' || '米闪闪渠道版-深圳市闪里数字科技有限公司'
     }
     const { userStore, routesStore } = store();
     // 确定用户是否已登录过，存在Token
